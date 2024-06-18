@@ -311,7 +311,7 @@ void UsbHost::daemonTask(void)
   }
 }
 
-void UsbHost::setSupportedEndpointType(uint8_t type = USB_BM_ATTRIBUTES_XFER_BULK) { supportedEndpointType = type; }
+void UsbHost::setSupportedEndpointType(uint8_t type) { supportedEndpointType = type; }
 bool UsbHost::isDeviceConnected() { return isConnected; }
 
 esp_err_t UsbHost::sendMessage(const uint8_t *buffer, const uint16_t bufferLen)
