@@ -13,7 +13,7 @@ This is mainly a wrapper around the [api](https://github.com/espressif/esp-idf/t
 #include <UsbHost.h>
 
 const int N = 4;
-const byte[N] buffer = {1,2,3,4};
+const byte buffer[N] = {1, 2, 3, 4};
 
 class USBCallbacks : public UsbCallbacks
 {
@@ -21,26 +21,25 @@ class USBCallbacks : public UsbCallbacks
   void onSentMessage(const uint8_t *buffer, const uint16_t bufferLength) {}
 };
 
-
 void setup()
-  { 
-    // automaticaly initialises all ports
-    // creates background usb-handling task
-    UsbHost::init();
+{
+  // automaticaly initialises all ports
+  // creates background usb-handling task
+  UsbHost::init();
 
-    // sets callbacks to handle usb requests
-    UsbHost::setCallbacks(new USBCallbacks());
+  // sets callbacks to handle usb requests
+  UsbHost::setCallbacks(new USBCallbacks());
 
-    // if needed, stops calling thread until usb device is connected
-    UsbHost::waitForConnect();
+  // if needed, stops calling thread until usb device is connected
+  UsbHost::waitForConnect();
 
-    // some other setup() stuff
-  }
+  // some other setup() stuff
+}
 
 void loop()
 {
-  if(UsbHost::isDeviceConnected())
-    UsbHost::sendMessage(buffer,N);
+  if (UsbHost::isDeviceConnected())
+    UsbHost::sendMessage(buffer, N);
 
   // some loop() stuff
 }
