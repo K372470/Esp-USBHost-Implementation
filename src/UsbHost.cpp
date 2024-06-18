@@ -314,6 +314,8 @@ esp_err_t UsbHost::sendMessage(const uint8_t *buffer, const uint16_t bufferLen)
 {
   if (bufferLen > MAXIMUM_OUTPUT_TRANFER_BUFFER_LENGTH)
     return ESP_ERR_INVALID_SIZE;
+  if (OutTransfer == NULL)
+    return ESP_ERR_NOT_SUPPORTED;
 
   memcpy(OutTransfer->data_buffer, buffer, bufferLen);
   OutTransfer->num_bytes = bufferLen;
