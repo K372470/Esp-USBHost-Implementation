@@ -17,6 +17,7 @@ TaskHandle_t *UsbHost::usbTaskHandle = NULL;
 
 bool UsbHost::isConnected = false;
 bool UsbHost::readyToConnect = false;
+uint8_t UsbHost::supportedEndpointType = 0;
 
 usb_transfer_t *UsbHost::OutTransfer = NULL;
 usb_transfer_t *UsbHost::InTransfer = NULL;
@@ -309,6 +310,9 @@ void UsbHost::daemonTask(void)
     ESP_LOGE(USBH_LOG_TAG, "usb_host_client_handle_events: %x", err);
   }
 }
+
+void UsbHost::setSupportedEndpointType(uint8_t type = USB_BM_ATTRIBUTES_XFER_BULK) { supportedEndpointType = type; }
+bool UsbHost::isDeviceConnected() { return isConnected; }
 
 esp_err_t UsbHost::sendMessage(const uint8_t *buffer, const uint16_t bufferLen)
 {

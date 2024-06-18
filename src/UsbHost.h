@@ -6,7 +6,7 @@
 #define USBH_LOG_TAG "USBH"
 
 #ifndef USB_HOST_CONTROL_TRANSFER_MAX_SIZE
-#define USB_HOST_CONTROL_TRANSFER_MAX_SIZE 256 // on esp-idf platform, you can setup this in sdkconfig
+#define USB_HOST_CONTROL_TRANSFER_MAX_SIZE 256 // on esp-idf platform can setup this in sdkconfig
 #endif
 
 class UsbHost // FIXME: all names are different style-guide. If somebody can help, please, do.
@@ -47,7 +47,7 @@ private:
 public:
   /// @brief
   /// @return state of usb service
-  static bool isDeviceConnected() { return isConnected; }
+  static bool isDeviceConnected();
 
   /// @brief Disconnect and Dispose memory used for transports.
   static void freeBuffers();
@@ -64,7 +64,7 @@ public:
 
   /// @brief Use this, if needed to get only needed endpoints (ex: to remove INTERRUPT, which spam big sound packets on some sound-cards)
   /// @param type Only endpoint with this type will be used (ex: USB_BM_ATTRIBUTES_XFER_BULK)
-  static void setSupportedEndpointType(uint8_t type = USB_BM_ATTRIBUTES_XFER_BULK) { supportedEndpointType = type; }
+  static void setSupportedEndpointType(uint8_t type = USB_BM_ATTRIBUTES_XFER_BULK);
 
   /// @brief Set callbacks to call on receiving message
   static void
