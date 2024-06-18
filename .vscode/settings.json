@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.jsx": "javascript",
+    "*.js": "javascript",
+    "*.gs": "typescript",
+    "*.bpi": "vb",
+    "*.bp": "vb",
+    "*.bpm": "vb",
+    "cstddef": "cpp"
+  }
+}
