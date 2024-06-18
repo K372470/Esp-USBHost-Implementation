@@ -10,6 +10,11 @@ This is mainly a wrapper around the [api](https://github.com/espressif/esp-idf/t
 ### Basic Usage 
 
 ```cpp
+#include <UsbHost.h>
+
+const int N = 4;
+const byte[N] buffer = {1,2,3,4};
+
 class USBCallbacks : public UsbCallbacks
 {
   void onRecievedMessage(const uint8_t *buffer, const uint16_t bufferLength) {}
@@ -34,6 +39,9 @@ void setup()
 
 void loop()
 {
+  if(UsbHost::isDeviceConnected())
+    UsbHost::sendMessage(buffer,N);
+
   // some loop() stuff
 }
 ```
