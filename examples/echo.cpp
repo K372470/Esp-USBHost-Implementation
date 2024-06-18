@@ -5,7 +5,7 @@ namespace USB::Examples
 {
   // idk where you can use it, but if you can - good luch
 
-  class GamepadController : public UsbCallbacks
+  class EchoController : public UsbCallbacks
   {
     void onSentMessage(const uint8_t *buffer, const uint16_t bufferLength)
     {
@@ -24,7 +24,7 @@ namespace USB::Examples
   void setup()
   {
     UsbHost::init();
-    UsbHost::setCallbacks(new GamepadController());
+    UsbHost::setCallbacks(new EchoController());
     UsbHost::waitForConnect();
   }
 
